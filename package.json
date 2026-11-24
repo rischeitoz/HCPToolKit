@@ -1,0 +1,72 @@
+{
+  "name": "hcptoolkit",
+  "productName": "HCPToolKit",
+  "version": "1.0.0",
+  "description": "HCPToolKit - Diagnóstico y Mantenimiento",
+  "main": "main.js",
+  "author": "IT Department",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "prebuild": "node scripts/generate-icons.js",
+    "build": "node scripts/generate-icons.js",
+    "predist": "node scripts/generate-icons.js",
+    "dist": "node scripts/build-package.js --win portable",
+    "prepackage": "node scripts/generate-icons.js",
+    "package": "node scripts/build-package.js --win portable",
+    "build:exe": "node scripts/build-package.js --win portable",
+    "build:installer": "node scripts/build-package.js --win nsis",
+    "verify:icon": "node scripts/build-package.js --verify-only",
+    "lint": "node -c main.js preload.js server.js rdp-manager.js system-event-log.js event-parser.js stress-engine.js scripts/generate-icons.js scripts/build-package.js renderer/api-bridge.js renderer/renderer.js",
+    "dev": "node server.js",
+    "start": "electron .",
+    "start:web": "node server.js",
+    "start:electron": "electron .",
+    "electron": "electron ."
+  },
+  "build": {
+    "appId": "com.hcptoolkit.app",
+    "productName": "HCPToolKit",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        "portable",
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "HCPToolKit"
+    },
+    "portable": {
+      "artifactName": "HCPToolKit.exe"
+    },
+    "files": [
+      "**/*",
+      "!dist/*"
+    ]
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "axios": "^1.7.9",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "fast-speedtest-api": "^0.3.2",
+    "mammoth": "^1.12.1",
+    "png-to-ico": "^3.0.2"
+  },
+  "devDependencies": {
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "HCPToolKit",
+  "description": "HCPToolKit: Plataforma corporativa de diagnóstico, mantenimiento y soporte técnico para Architecture, Engineering y Urban Planning.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
